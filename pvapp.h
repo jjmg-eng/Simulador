@@ -28,6 +28,7 @@ int show_mask1(PARAM *p);
 
 //***************************************************************************
 // Meu código
+// Comum para Main e Masks
 
 #include "stdlib.h"
 #include "math.h"
@@ -63,13 +64,17 @@ int LEADLAG(long I, int V0, int Vp, int Vhf, int TA, int TB, char SET, int VAL, 
 int WashOut(long I, long T, long *INT, int *Q);
 char *describeArc(char *buf, float x, float y, float radius, float startAngle, float endAngle);
 
-#ifndef _MAIN_
+/////////////////////////////////////////////
+#ifndef _MAIN_  // Código exclusivo das Masks
+/////////////////////////////////////////////
 
 extern TAGS tag;
 
-#else
+/////////////////////////////////////////////////////////////////
+#else // Aqui começa o código que vai ser compilado na seção Main
+/////////////////////////////////////////////////////////////////
 
-rlThread thread;
+rlThread usrThread;
 rlMutex mutex;
 TAGS tag;
 
@@ -145,7 +150,7 @@ static void loop()
  pvSleep(TZ);
 };
 
-static void *Thread(void *arg)
+static void *usrMain(void *arg)
 {
  setup();
  while(1) loop();

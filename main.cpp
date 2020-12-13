@@ -59,7 +59,7 @@ int   s;
   pvInit(ac,av,&p);
   /* here you may interpret ac,av and set p->user to your data */
   p.port=5051;
-  thread.create(&Thread,NULL);
+  usrThread.create(&usrMain,NULL);
   while(1)
   {
     s = pvAccept(&p);
