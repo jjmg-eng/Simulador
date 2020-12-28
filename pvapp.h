@@ -7,7 +7,7 @@
 //***************************************************************************
 #ifndef _PVAPP_H_
 #define _PVAPP_H_
-// modificado para usar SSH
+
 #ifdef USE_INETD
 static int trace=0; // todo: set trace=0 if you do not want printf() within event loop
 #else
